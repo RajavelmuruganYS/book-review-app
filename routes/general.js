@@ -1,42 +1,32 @@
 const axios = require("axios");
 
+// Get all books
 async function getAllBooks() {
-  try {
-    const res = await axios.get("http://localhost:3000/books");
-    console.log(res.data);
-  } catch (err) {
-    console.error(err.message);
-  }
+  const res = await axios.get("http://localhost:3000/books");
+  return res.data;
 }
 
+// Get book by ISBN
 async function getBookByISBN(isbn) {
-  try {
-    const res = await axios.get(`http://localhost:3000/books/isbn/${isbn}`);
-    console.log(res.data);
-  } catch (err) {
-    console.error(err.message);
-  }
+  const res = await axios.get(`http://localhost:3000/books/isbn/${isbn}`);
+  return res.data;
 }
 
+// Get books by author
 async function getBooksByAuthor(author) {
-  try {
-    const res = await axios.get(`http://localhost:3000/books/search?author=${author}`);
-    console.log(res.data);
-  } catch (err) {
-    console.error(err.message);
-  }
+  const res = await axios.get(`http://localhost:3000/books/author/${author}`);
+  return res.data;
 }
 
+// Get books by title
 async function getBooksByTitle(title) {
-  try {
-    const res = await axios.get(`http://localhost:3000/books/search?title=${title}`);
-    console.log(res.data);
-  } catch (err) {
-    console.error(err.message);
-  }
+  const res = await axios.get(`http://localhost:3000/books/title/${title}`);
+  return res.data;
 }
 
-getAllBooks();
-getBookByISBN("978-3-16-148410-0");
-getBooksByAuthor("Fitzgerald");
-getBooksByTitle("Gatsby");
+module.exports = {
+  getAllBooks,
+  getBookByISBN,
+  getBooksByAuthor,
+  getBooksByTitle
+};
