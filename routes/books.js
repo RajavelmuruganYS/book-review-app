@@ -103,4 +103,4 @@ router.delete("/review/:isbn", authenticateJWT, (req, res) => {
   });
 });
 
-mod
+module.exports = router;
